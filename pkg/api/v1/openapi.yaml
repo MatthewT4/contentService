@@ -11,9 +11,10 @@ tags:
 
 paths:
   /v1/images:
-    post:
+    get:
       tags:
         - image
+      operationId: Images
       responses:
         "200":
           description: OK
@@ -33,7 +34,7 @@ paths:
           schema:
             type: integer
       summary: Получение фотографии по id
-      operationId: GetImage
+      operationId: ImageGet
       responses:
         "200":
           description: OK
@@ -48,17 +49,20 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Error"
-    delete:
+  /v1/image:
+    post:
       tags:
         - image
-      parameters:
-        - in: path
-          name: image_id
-          required: true
-          schema:
-            type: integer
-      summary: Удаление фотографии по id
-      operationId: DeleteImage
+      requestBody:
+        required: true
+        content:
+          image/*:
+            schema:
+              type: string
+              format: binary
+
+      summary: Загрузка фотографии
+      operationId: ImageDelete
       responses:
         "200":
           description: OK
