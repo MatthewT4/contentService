@@ -63,7 +63,9 @@ paths:
         "200":
           description: OK
           content:
-            text/plain
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     Images:
