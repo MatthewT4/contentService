@@ -1,7 +1,19 @@
 package app
 
-import "contentService/internal/api"
+import (
+	"contentService/internal/api"
+	"contentService/internal/config"
+)
 
 type App struct {
-	api api.Api
+	config config.Config
+	api    api.Api
+}
+
+func NewApp() *App {
+	return &App{}
+}
+
+func (a *App) Initialize() {
+
 }
